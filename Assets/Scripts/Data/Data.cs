@@ -8,9 +8,11 @@ namespace HellicopterGame
     {
         [SerializeField] private string _playerDataPath;
         [SerializeField] private string _level01;
+        [SerializeField] private string _levelBackrgound;
         private PlayerData _player;
         private Level _level;
-        
+        private LevelBackground _levelBackground;
+
         public PlayerData Player
         {
             get
@@ -34,6 +36,18 @@ namespace HellicopterGame
                 }
 
                 return _level;
+            }
+        }
+        public LevelBackground LevelBackground
+        {
+            get
+            {
+                if (_levelBackground == null)
+                {
+                    _levelBackground = Load<LevelBackground>("Data/" + _levelBackrgound);
+                }
+
+                return _levelBackground;
             }
         }
         

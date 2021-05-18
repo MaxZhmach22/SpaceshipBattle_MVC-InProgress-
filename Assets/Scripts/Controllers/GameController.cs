@@ -18,7 +18,7 @@ namespace HellicopterGame
         
         private void Update()
         {
-            var deltaTime = Time.deltaTime; //Переменная deltatime высчитывается один раз что бы передать во все контроллеры одно и тоже значение.
+            var deltaTime = Time.deltaTime; 
             _controllers.Execute(deltaTime);
         }
     }

@@ -24,9 +24,6 @@ namespace HellicopterGame
             }
         }
         public Vector3 Position => _position;
-        
-        
-
 
         public void CreatePlayer()
         {

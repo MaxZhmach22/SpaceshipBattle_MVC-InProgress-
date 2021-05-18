@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDataPath: Player
   _level01: Level01
+  _levelBackrgound: LevelBackground
