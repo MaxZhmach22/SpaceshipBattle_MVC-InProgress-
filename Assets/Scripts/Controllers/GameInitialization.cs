@@ -18,6 +18,7 @@ namespace HellicopterGame
             controllers.Add(playerInitialization);
             controllers.Add(backgroundImage);
             controllers.Add(dynamicStart);
+            controllers.Add(Enemy.CreateAttackAircraft(new Health(100,100)));
             controllers.Add(new BackgroundSpriteMover(backgroundImage.GetBackgroundImage(), dynamicStart.GetBackgroundStars(), data.LevelBackground.SpeedBackground, data.LevelBackground.SpeedSmallStars));
             controllers.Add(new InputController(inputInitialization.GetInput()));
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player));
