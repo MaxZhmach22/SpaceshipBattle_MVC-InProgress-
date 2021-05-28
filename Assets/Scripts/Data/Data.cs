@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace HellicopterGame
 {
@@ -7,12 +10,20 @@ namespace HellicopterGame
     public sealed class Data : ScriptableObject
     {
         [SerializeField] private string _playerDataPath;
-        [SerializeField] private string _level01;
         [SerializeField] private string _levelBackrgound;
+
+        [Space]
+        [Header("Weapons")]
+        [SerializeField] private string _machineGunPath;
+        [SerializeField] private string _laserGunPath;
+        [SerializeField] private string _rocketGunPath;
+        [SerializeField] private List<WeaponsData> _weaponsList;
         private PlayerData _player;
         private Level _level;
         private LevelBackground _levelBackground;
 
+        public List<WeaponsData> WeaponsList => _weaponsList;
+        
         public PlayerData Player
         {
             get
@@ -26,18 +37,6 @@ namespace HellicopterGame
             }
         }
         
-        public Level Level
-        {
-            get
-            {
-                if (_level == null)
-                {
-                    _level = Load<Level>("Data/" + _level01);
-                }
-
-                return _level;
-            }
-        }
         public LevelBackground LevelBackground
         {
             get
@@ -51,10 +50,9 @@ namespace HellicopterGame
             }
         }
         
-        
-        
         private T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
+
     }
     
 }
