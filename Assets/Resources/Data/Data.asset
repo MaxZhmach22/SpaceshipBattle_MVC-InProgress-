@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDataPath: Player
   _levelBackrgound: LevelBackground
-  _machineGunPath: Machine Gun
-  _laserGunPath: Laser Gun
-  _rocketGunPath: Rocket Gun
   _weaponsList:
   - {fileID: 11400000, guid: 2ef9e336da89b3d49b4287336be5236c, type: 2}
   - {fileID: 11400000, guid: 85219d2948989a14399a8438a4313b5a, type: 2}
   - {fileID: 11400000, guid: a6fe1f6fb1c51a94cabbdc26eed9b04d, type: 2}
+  _spawnPointsPath: SpawnPoints

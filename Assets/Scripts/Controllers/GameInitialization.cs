@@ -13,16 +13,22 @@ namespace HellicopterGame
             var backgroundImage = new BackgroundMainImage(data);
             var dynamicStart = new BackgroundDynamicStars(data.LevelBackground);
             var weaponsListInitialization = new WeaponsListInit(data);
+            var spawnPointInitialization = new SpawnPointsInit(data);
+            var viewServises = new ViewServices();
+            var enemyPool = new EnemyPool(10, spawnPointInitialization.GetSpwanPointList());
             controllers.Add(new BackgroundStaticStars(data.LevelBackground));
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
             controllers.Add(backgroundImage);
             controllers.Add(dynamicStart);
-            controllers.Add(Enemy.CreateAttackAircraft(new Health(100,100)));
+            // controllers.Add(Enemy.CreateAttackAircraft(new Health(100,100)));
             controllers.Add(new BackgroundSpriteMover(backgroundImage.GetBackgroundImage(), dynamicStart.GetBackgroundStars(), data.LevelBackground.SpeedBackground, data.LevelBackground.SpeedSmallStars));
             controllers.Add(new InputController(inputInitialization.GetInput()));
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player));
-            controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization));
+            controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));
+            var enemy = enemyPool.GetEnemy("Attack Aircraft");
+            enemy.gameObject.SetActive(true);
+            enemy.transform.position = new Vector3(0, 5, 0);
         }
     }
 }

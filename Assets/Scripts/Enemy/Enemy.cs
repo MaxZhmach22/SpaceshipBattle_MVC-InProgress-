@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace HellicopterGame
 {
-    public abstract class Enemy : MonoBehaviour, IInitialization
+    public abstract class Enemy : MonoBehaviour
     {
         public Health Health { get; private set; }
 
@@ -13,9 +13,6 @@ namespace HellicopterGame
             return enemy;
         }
 
-        public void Initialization()
-        {
-           
-        }
+        
     }
 }
