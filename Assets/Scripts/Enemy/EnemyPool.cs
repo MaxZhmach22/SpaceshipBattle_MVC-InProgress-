@@ -12,11 +12,11 @@ namespace HellicopterGame
         private readonly int _capacityPool;
         private Transform _rootPool;
         
-        public EnemyPool(int capacityPool, List<Transform> rootPool)
+        public EnemyPool(int capacityPool, Transform rootPool)
         {
             _enemyPool = new Dictionary<string, HashSet<Enemy>>();
             _capacityPool = capacityPool;
-            _rootPool = rootPool[1];
+            _rootPool = rootPool;
         }
         public Enemy GetEnemy(string type)
         {
@@ -24,7 +24,7 @@ namespace HellicopterGame
             switch (type)
             {
                 case "Attack Aircraft":
-                    result = GetAsteroid(GetListEnemies(type));
+                    result = GetEnemy(GetListEnemies(type));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, "Не предусмотрен в программе");
@@ -37,7 +37,7 @@ namespace HellicopterGame
             return _enemyPool.ContainsKey(type) ? _enemyPool[type] : _enemyPool[type] = new HashSet<Enemy>();
         }
 
-        private Enemy GetAsteroid(HashSet<Enemy> enemies)
+        private Enemy GetEnemy(HashSet<Enemy> enemies)
         {
             var enemy = enemies.FirstOrDefault(a => !a.gameObject.activeSelf);
             if (enemy == null )
@@ -49,17 +49,15 @@ namespace HellicopterGame
                     ReturnToPool(instantiate.transform);
                     enemies.Add(instantiate);
                 }
-
                 enemy = enemies.FirstOrDefault(a => !a.gameObject.activeSelf);
-                GetAsteroid(enemies);
+                GetEnemy(enemies);
             }
             return enemy;
         }
 
         private void ReturnToPool(Transform transform)
         {
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
+            transform.position = _rootPool.position;
             transform.gameObject.SetActive(false);
             transform.SetParent(_rootPool);
         }

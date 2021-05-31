@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HellicopterGame
 {
-    public sealed class AttackAircraft : Enemy, IMover, IExecute
+    public sealed class AttackAircraft : Enemy, IExecute
     {
         private float _speed = 5f;
         public float Speed => _speed;
@@ -15,13 +15,27 @@ namespace HellicopterGame
 
         private void OnBecameInvisible()
         {
-            transform.position = Vector3.zero;
-            transform.rotation = Quaternion.identity;
+            ReturnToPool();
+        }
+
+        private void ReturnToPool()
+        {
+            transform.localPosition = transform.parent.position;
+            transform.gameObject.SetActive(false);
         }
 
         public void Execute(float deltaTime)
         {
-            Move(deltaTime);
+            if (isActiveAndEnabled)
+            {
+                Move(deltaTime);
+            }
+            
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            ReturnToPool();
         }
     }
 }

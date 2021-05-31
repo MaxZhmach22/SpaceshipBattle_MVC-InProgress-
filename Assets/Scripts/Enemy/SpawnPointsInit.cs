@@ -5,21 +5,13 @@ namespace HellicopterGame
 {
     public sealed class SpawnPointsInit
     {
-        private Transform _leftSwapnPoint;
-        private Transform _rightSwapnPoint;
-        private Transform _centerSwapnPoint;
-
-        private List<Transform> _spawnPoints;
-
-        public SpawnPointsInit(Data _data)
+        private Transform _swapnPoint;
+        private Vector3 _point;
+        
+        public SpawnPointsInit(Vector3 point)
         {
-            _leftSwapnPoint = CreatePoint(_data.SpawnPoints.LeftSpawnPoint);
-            _rightSwapnPoint = CreatePoint(_data.SpawnPoints.RightSpawnPoint);
-            _centerSwapnPoint = CreatePoint(_data.SpawnPoints.CenterpawnPoint);
-            _spawnPoints = new List<Transform>();
-            _spawnPoints.Add(_leftSwapnPoint);
-            _spawnPoints.Add(_rightSwapnPoint);
-            _spawnPoints.Add(_centerSwapnPoint);
+            _point = point;
+            _swapnPoint = CreatePoint(_point);
         }
         
         public Transform CreatePoint(Vector3 point)
@@ -29,9 +21,9 @@ namespace HellicopterGame
             return spawnPoint.transform;
         }
 
-        public List<Transform> GetSpwanPointList()
+        public Transform GetSpwanPoint()
         {
-            return _spawnPoints;
+            return _swapnPoint;
         }
         
     }

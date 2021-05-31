@@ -17,7 +17,6 @@ namespace HellicopterGame
         private ViewServices _viewServices;
         private GameObject bullet;
         
-
         public ShootingController(Transform getPlayer, Data data, WeaponsListInit weaponsList, ViewServices viewServices)
         {
             _data = data;
@@ -47,7 +46,6 @@ namespace HellicopterGame
                 default:
                     _currentWeapon = 0;
                     break;
-                    
             }
         }
 
