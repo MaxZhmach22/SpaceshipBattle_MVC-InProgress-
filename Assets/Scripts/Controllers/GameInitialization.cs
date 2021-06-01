@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HellicopterGame
@@ -18,9 +20,21 @@ namespace HellicopterGame
             var centerSpanPointInit = new SpawnPointsInit(data.SpawnPoints.CenterpawnPoint);
             var rightSpanPointInit = new SpawnPointsInit(data.SpawnPoints.RightSpawnPoint);
             var viewServises = new ViewServices();
-            var leftEnemyPool = new EnemyPool(10, leftSpanPointInit.GetSpwanPoint());
-            var centerEnemyPool = new EnemyPool(10, centerSpanPointInit.GetSpwanPoint());
-            var rightEnemyPool = new EnemyPool(10, rightSpanPointInit.GetSpwanPoint());
+            var leftEnemyPool = new EnemyPool(10, leftSpanPointInit.GetSpwanPoint(), data.EnemyPoolsData);
+            var centerEnemyPool = new EnemyPool(10, centerSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
+            var rightEnemyPool = new EnemyPool(10, rightSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
+            var poolDictionary = leftEnemyPool.GetQueueList();
+            foreach (var enemy in poolDictionary.Values)
+            {
+                foreach (var enem in enemy)
+                {
+                    if (enem is AttackAircraft aircraft)
+                    {
+                        Debug.Log("+");
+                        controllers.Add(aircraft);
+                    }
+                }
+            }
             controllers.Add(new BackgroundStaticStars(data.LevelBackground));
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
@@ -30,12 +44,14 @@ namespace HellicopterGame
             controllers.Add(new InputController(inputInitialization.GetInput()));
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player));
             controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));
-            var enemy = leftEnemyPool.GetEnemy("Attack Aircraft");
-            
-            centerEnemyPool.GetEnemy("Attack Aircraft");
-            rightEnemyPool.GetEnemy("Attack Aircraft");
-            
-           
+            var  activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool);
+            controllers.Add(activator);
+            //
+            // leftEnemyPool.GetEnemy("Attack Aircraft");
+            // centerEnemyPool.GetEnemy("Attack Aircraft");
+            // rightEnemyPool.GetEnemy("Attack Aircraft");
+            //
+
         }
     }
 }
