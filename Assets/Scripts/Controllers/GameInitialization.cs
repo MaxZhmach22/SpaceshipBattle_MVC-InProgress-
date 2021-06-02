@@ -27,7 +27,7 @@ namespace HellicopterGame
             EnemyAddControllers(controllers, leftEnemyPool.GetDictionary());
             EnemyAddControllers(controllers, rightEnemyPool.GetDictionary());
             EnemyAddControllers(controllers, centerEnemyPool.GetDictionary());
-            var activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool);
+            var activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool, data);
             controllers.Add(new BackgroundStaticStars(data.LevelBackground));
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);

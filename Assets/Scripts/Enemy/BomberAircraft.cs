@@ -20,7 +20,7 @@ public class BomberAircraft : Enemy, IExecute
 
     private void ReturnToPool()
     {
-        transform.localPosition = transform.parent.position;
+        transform.position = transform.parent.position;
         transform.gameObject.SetActive(false);
     }
 
@@ -35,7 +35,10 @@ public class BomberAircraft : Enemy, IExecute
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        ReturnToPool();
+        if (other.tag.Contains("Player"))
+        {
+            ReturnToPool();
+        }
     }
     
 }

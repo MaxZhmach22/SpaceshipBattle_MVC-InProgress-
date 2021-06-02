@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6fe1f6fb1c51a94cabbdc26eed9b04d, type: 2}
   _spawnPointsPath: SpawnPoints
   _enemyPoolsDataPath: EnemyPoolsData
+  _levelsList:
+  - {fileID: 11400000, guid: 666441459dcb03d45a62dcc7842b158f, type: 2}

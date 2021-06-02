@@ -23,13 +23,17 @@ namespace HellicopterGame
         [SerializeField]
         private string _enemyPoolsDataPath;
 
+        [Space] [Header("List of Levels Data")] [SerializeField]
+        private List<LevelsData> _levelsList;
+
+        
         private EnemyPoolsData _enemyPoolsData;
         private PlayerData _player;
-        private Level _level;
         private LevelBackground _levelBackground;
         private SpawnPoints _spawnPoints;
 
         public List<WeaponsData> WeaponsList => _weaponsList;
+        public List<LevelsData> LevelsDatas => _levelsList;
         
         public PlayerData Player
         {
