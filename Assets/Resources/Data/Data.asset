@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85219d2948989a14399a8438a4313b5a, type: 2}
   - {fileID: 11400000, guid: a6fe1f6fb1c51a94cabbdc26eed9b04d, type: 2}
   _spawnPointsPath: SpawnPoints
+  _enemyPoolsDataPath: EnemyPoolsData

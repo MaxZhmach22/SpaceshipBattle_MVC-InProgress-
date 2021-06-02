@@ -13,6 +13,7 @@ namespace HellicopterGame
             var inputInitialization = new InputInitialization();
             var playerFactory = new PlayerFactory(data.Player);
             var playerInitialization = new PlayerInitialization(playerFactory, data.Player);
+            var boundaries = new Boundaries(camera);
             var backgroundImage = new BackgroundMainImage(data);
             var dynamicStart = new BackgroundDynamicStars(data.LevelBackground);
             var weaponsListInitialization = new WeaponsListInit(data);
@@ -20,21 +21,13 @@ namespace HellicopterGame
             var centerSpanPointInit = new SpawnPointsInit(data.SpawnPoints.CenterpawnPoint);
             var rightSpanPointInit = new SpawnPointsInit(data.SpawnPoints.RightSpawnPoint);
             var viewServises = new ViewServices();
-            var leftEnemyPool = new EnemyPool(10, leftSpanPointInit.GetSpwanPoint(), data.EnemyPoolsData);
-            var centerEnemyPool = new EnemyPool(10, centerSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
-            var rightEnemyPool = new EnemyPool(10, rightSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
-            var poolDictionary = leftEnemyPool.GetQueueList();
-            foreach (var enemy in poolDictionary.Values)
-            {
-                foreach (var enem in enemy)
-                {
-                    if (enem is AttackAircraft aircraft)
-                    {
-                        Debug.Log("+");
-                        controllers.Add(aircraft);
-                    }
-                }
-            }
+            var leftEnemyPool = new EnemyPool(leftSpanPointInit.GetSpwanPoint(), data.EnemyPoolsData);
+            var centerEnemyPool = new EnemyPool(centerSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
+            var rightEnemyPool = new EnemyPool(rightSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
+            EnemyAddControllers(controllers, leftEnemyPool.GetDictionary());
+            EnemyAddControllers(controllers, rightEnemyPool.GetDictionary());
+            EnemyAddControllers(controllers, centerEnemyPool.GetDictionary());
+            var activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool);
             controllers.Add(new BackgroundStaticStars(data.LevelBackground));
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
@@ -42,16 +35,34 @@ namespace HellicopterGame
             controllers.Add(dynamicStart);
             controllers.Add(new BackgroundSpriteMover(backgroundImage.GetBackgroundImage(), dynamicStart.GetBackgroundStars(), data.LevelBackground.SpeedBackground, data.LevelBackground.SpeedSmallStars));
             controllers.Add(new InputController(inputInitialization.GetInput()));
-            controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player));
+            controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player, boundaries.ScreenBounds));
             controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));
-            var  activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool);
             controllers.Add(activator);
-            //
-            // leftEnemyPool.GetEnemy("Attack Aircraft");
-            // centerEnemyPool.GetEnemy("Attack Aircraft");
-            // rightEnemyPool.GetEnemy("Attack Aircraft");
-            //
 
+        }
+
+        private void EnemyAddControllers(Controllers controllers, Dictionary<string, Queue<Enemy>> poolDictionary)
+        {
+            foreach (var queue in poolDictionary.Values)
+            {
+                foreach (var enemy in queue)
+                {
+                    if (enemy is AttackAircraft attackAircraft)
+                    {
+                        controllers.Add(attackAircraft);
+                    }
+
+                    if (enemy is BomberAircraft bomberAircraft)
+                    {
+                        controllers.Add(bomberAircraft);
+                    }
+
+                    if (enemy is CruisAircraft cruisAircraft)
+                    {
+                        controllers.Add(cruisAircraft);
+                    }
+                }
+            }
         }
     }
 }

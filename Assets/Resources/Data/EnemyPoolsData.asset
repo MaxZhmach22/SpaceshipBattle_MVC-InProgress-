@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c664068755e48cfb60993ceb03ab0cb, type: 3}
   m_Name: EnemyPoolsData
   m_EditorClassIdentifier: 
-  pools: []
+  pools:
+  - tag: Attack Aircraft
+    prefab: {fileID: 3715544236058621653, guid: 9c6a8fe7e0403e84bbd4a9241ad81ce4, type: 3}
+    size: 10
+  - tag: Bomber Aircraft
+    prefab: {fileID: 2591346358906955753, guid: 5e5d27ae3e49d8d4e90fd7f6cc9a6773, type: 3}
+    size: 6
+  - tag: Cruis Aircraft
+    prefab: {fileID: 6251737831674319213, guid: 81b2d18c62b0abd48958a702d66a514f, type: 3}
+    size: 4

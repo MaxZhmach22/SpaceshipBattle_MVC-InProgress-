@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,12 @@ namespace HellicopterGame
         {
             var deltaTime = Time.deltaTime; 
             _controllers.Execute(deltaTime);
+        }
+
+        private void LateUpdate()
+        {
+            var deltaTime = Time.deltaTime;
+            _controllers.LateExecute(deltaTime);
         }
     }
 
