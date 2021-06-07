@@ -34,7 +34,6 @@ namespace HellicopterGame
             _pools.Add(_leftPool);
             _pools.Add(_centerPool);
             _pools.Add(_rigthPool);
-         
         }
 
         public void Execute(float deltaTime)
@@ -42,10 +41,8 @@ namespace HellicopterGame
            SetActiveShips(deltaTime, _listOfEnemies, _leftPool);
         }
         
-
         private void SetActiveShips(float deltatime, List<LevelsData.EnemyInfo> listOfEnemies, EnemyPool pool)
         {
-
             if (_timerBetweenSameTypeOfShips <= timeCount && nextInList<listOfEnemies.Count)
             {
                 var enemy = pool.SpawnFromPool(listOfEnemies[nextInList].nameOfEnemy.name);
@@ -59,12 +56,8 @@ namespace HellicopterGame
                     {
                         _countOfSHips = listOfEnemies[nextInList].count;
                     }
-                    
-                    Debug.Log("Next " + nextInList.ToString());
-                   
                 }
             }
-
             timeCount += deltatime;
         }
     }

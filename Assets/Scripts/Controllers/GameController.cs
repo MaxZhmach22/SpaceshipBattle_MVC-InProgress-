@@ -9,7 +9,7 @@ namespace HellicopterGame
     {
         [SerializeField] private Data _data;
         private Controllers _controllers;
-
+        
         void Start()
         {
             _controllers = new Controllers();

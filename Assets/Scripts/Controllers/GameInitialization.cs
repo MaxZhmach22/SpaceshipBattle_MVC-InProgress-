@@ -24,9 +24,10 @@ namespace HellicopterGame
             var leftEnemyPool = new EnemyPool(leftSpanPointInit.GetSpwanPoint(), data.EnemyPoolsData);
             var centerEnemyPool = new EnemyPool(centerSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
             var rightEnemyPool = new EnemyPool(rightSpanPointInit.GetSpwanPoint(),data.EnemyPoolsData);
-            EnemyAddControllers(controllers, leftEnemyPool.GetDictionary());
-            EnemyAddControllers(controllers, rightEnemyPool.GetDictionary());
-            EnemyAddControllers(controllers, centerEnemyPool.GetDictionary());
+            ServiceLocator.SetService<IService>(leftEnemyPool); 
+            EnemyAddControllers(controllers, ServiceLocator.Resolve<IService>().GetPoolDictionary());
+            EnemyAddControllers(controllers, rightEnemyPool.GetPoolDictionary());
+            EnemyAddControllers(controllers, centerEnemyPool.GetPoolDictionary());
             var activator = new EnemyActivator(leftEnemyPool, centerEnemyPool, rightEnemyPool, data);
             controllers.Add(new BackgroundStaticStars(data.LevelBackground));
             controllers.Add(inputInitialization);

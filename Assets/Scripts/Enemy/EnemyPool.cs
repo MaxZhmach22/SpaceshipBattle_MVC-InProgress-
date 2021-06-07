@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace HellicopterGame
 {
-    public class EnemyPool
+    public class EnemyPool : IService
     {
         private Transform _rootPool;
         private EnemyPoolsData _enemyPoolsData;
@@ -46,7 +46,7 @@ namespace HellicopterGame
             return null;
         }
         
-        public Dictionary<string, Queue<Enemy>> GetDictionary()
+        public Dictionary<string, Queue<Enemy>> GetPoolDictionary()
         {
             return _poolDictionary;
         }

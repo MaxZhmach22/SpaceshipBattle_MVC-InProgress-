@@ -14,6 +14,8 @@ namespace HellicopterGame
         
         public Transform CreatePlayer()
         {
+            
+            
             _player = new GameObject(_playerData.PlayersName);
             _player.tag = "Player";
             _player.AddComponent<SpriteRenderer>();
