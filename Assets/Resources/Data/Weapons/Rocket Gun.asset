@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03223f9c6c344078b321654c53597b45, type: 3}
+  m_Script: {fileID: 11500000, guid: c6d44d43fac8a1049bd44d204111f31b, type: 3}
   m_Name: Rocket Gun
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5171993882628977509, guid: a69f8cfa2486de14280ffc8b04869fbc, type: 3}
   _damage: 50
   _name: Rocket Gun
-  _fireSpeed: 50
+  _fireSpeed: 35

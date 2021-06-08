@@ -11,7 +11,6 @@ namespace HellicopterGame
     {
         private Data _data;
         private Transform _playerPosition;
-        private ExampleWeaponChange _exampleWeaponChange;
         private List<IWeapon> _weaponsList;
         private int _currentWeapon = 0;
         private ViewServices _viewServices;

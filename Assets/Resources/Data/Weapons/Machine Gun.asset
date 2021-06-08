@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a3983a78fd4bbc80733f22684e78c8, type: 3}
+  m_Script: {fileID: 11500000, guid: c6d44d43fac8a1049bd44d204111f31b, type: 3}
   m_Name: Machine Gun
   m_EditorClassIdentifier: 
   _prefab: {fileID: 7678514179061489438, guid: c5cefe20d55307d4685eb6b8c1cca654, type: 3}
   _damage: 5
   _name: Machine Gun
-  _fireSpeed: 80
+  _fireSpeed: 85

@@ -13,7 +13,7 @@ namespace HellicopterGame
             var inputInitialization = new InputInitialization();
             var playerFactory = new PlayerFactory(data.Player);
             var playerInitialization = new PlayerInitialization(playerFactory, data.Player);
-            var boundaries = new Boundaries(camera);
+            var boundaries = new BoundariesOfApp(camera);
             var backgroundImage = new BackgroundMainImage(data);
             var dynamicStart = new BackgroundDynamicStars(data.LevelBackground);
             var weaponsListInitialization = new WeaponsListInit(data);
@@ -39,7 +39,6 @@ namespace HellicopterGame
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player, boundaries.ScreenBounds));
             controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));
             controllers.Add(activator);
-
         }
 
         private void EnemyAddControllers(Controllers controllers, Dictionary<string, Queue<Enemy>> poolDictionary)

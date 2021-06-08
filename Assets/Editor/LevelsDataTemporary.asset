@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d44d43fac8a1049bd44d204111f31b, type: 3}
-  m_Name: Laser Gun
+  m_Script: {fileID: 11500000, guid: 59e191eb100e4f0cb14f95763fa23539, type: 3}
+  m_Name: LevelsDataTemporary
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2728146624580717581, guid: 02477de0377605246af03858da103b8d, type: 3}
-  _damage: 10
-  _name: 
-  _fireSpeed: 70
