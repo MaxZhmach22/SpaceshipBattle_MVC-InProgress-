@@ -9,14 +9,14 @@ namespace HellicopterGame
 {
     public class ShootingController : IExecute
     {
-        private Data _data;
+        private MainData _data;
         private Transform _playerPosition;
         private List<IWeapon> _weaponsList;
         private int _currentWeapon = 0;
         private ViewServices _viewServices;
         private GameObject bullet;
         
-        public ShootingController(Transform getPlayer, Data data, WeaponsListInit weaponsList, ViewServices viewServices)
+        public ShootingController(Transform getPlayer, MainData data, WeaponsListInit weaponsList, ViewServices viewServices)
         {
             _data = data;
             _playerPosition = getPlayer;

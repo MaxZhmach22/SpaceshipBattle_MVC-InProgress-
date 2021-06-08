@@ -7,7 +7,7 @@ namespace HellicopterGame
 {
     public sealed class GameInitialization
     {
-        public GameInitialization(Controllers controllers, Data data)
+        public GameInitialization(Controllers controllers, MainData data)
         {
             Camera camera = Camera.main;
             var inputInitialization = new InputInitialization();

@@ -6,8 +6,8 @@ using Object = UnityEngine.Object;
 
 namespace HellicopterGame
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "Data/Data")]
-    public sealed class Data : ScriptableObject
+    [CreateAssetMenu(fileName = "MainData", menuName = "MainData/Data")]
+    public sealed class MainData : ScriptableObject
     {
         [SerializeField] private string _playerDataPath;
         [SerializeField] private string _levelBackrgound;

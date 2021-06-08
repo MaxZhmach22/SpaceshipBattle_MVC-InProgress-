@@ -7,7 +7,7 @@ namespace HellicopterGame
 {
     public sealed class GameController : MonoBehaviour
     {
-        [SerializeField] private Data _data;
+        [SerializeField] private MainData _data;
         private Controllers _controllers;
         
         void Start()
