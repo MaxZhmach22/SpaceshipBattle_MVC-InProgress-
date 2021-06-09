@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace HellicopterGame
     {
         [SerializeField] private Data _data;
         private Controllers _controllers;
-
+        
         void Start()
         {
             _controllers = new Controllers();
@@ -20,6 +21,12 @@ namespace HellicopterGame
         {
             var deltaTime = Time.deltaTime; 
             _controllers.Execute(deltaTime);
+        }
+
+        private void LateUpdate()
+        {
+            var deltaTime = Time.deltaTime;
+            _controllers.LateExecute(deltaTime);
         }
     }
 

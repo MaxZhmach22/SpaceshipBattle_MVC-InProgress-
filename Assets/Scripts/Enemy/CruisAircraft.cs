@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 
 namespace HellicopterGame
 {
-    public sealed class AttackAircraft : Enemy, IExecute
+    public class CruisAircraft : Enemy, IExecute
     {
-        private float _speed = 5f;
+        private float _speed = 6f;
         public float Speed => _speed;
-
+    
         public void Move(float deltaTime)
         {
             transform.Translate(Vector3.up * deltaTime * Speed);
@@ -37,10 +36,8 @@ namespace HellicopterGame
         {
             if (other.tag.Contains("Player"))
             {
-                
                 ReturnToPool();
             }
-            
         }
     }
 }

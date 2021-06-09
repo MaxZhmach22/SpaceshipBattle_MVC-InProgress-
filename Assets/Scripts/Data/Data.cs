@@ -16,16 +16,24 @@ namespace HellicopterGame
         [Header("Weapons")]
         [SerializeField] private List<WeaponsData> _weaponsList;
 
-        [Space] [Header("Enemy")] [SerializeField]
+        [Space] 
+        [Header("Enemy")] 
+        [SerializeField]
         private string _spawnPointsPath;
+        [SerializeField]
+        private string _enemyPoolsDataPath;
+
+        [Space] [Header("List of Levels Data")] [SerializeField]
+        private List<LevelsData> _levelsList;
+
         
-        
+        private EnemyPoolsData _enemyPoolsData;
         private PlayerData _player;
-        private Level _level;
         private LevelBackground _levelBackground;
         private SpawnPoints _spawnPoints;
 
         public List<WeaponsData> WeaponsList => _weaponsList;
+        public List<LevelsData> LevelsDatas => _levelsList;
         
         public PlayerData Player
         {
@@ -63,6 +71,19 @@ namespace HellicopterGame
                 }
 
                 return _spawnPoints;
+            }
+        }
+
+        public EnemyPoolsData EnemyPoolsData
+        {
+            get
+            {
+                if (_enemyPoolsData == null)
+                {
+                    _enemyPoolsData = Load<EnemyPoolsData>("Data/" + _enemyPoolsDataPath);
+                }
+
+                return _enemyPoolsData;
             }
         }
         
