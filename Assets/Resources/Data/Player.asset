@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa2fdcf80c548938ea602eaccc8ca6c, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
-  _playerModel: {fileID: 0}
+  _playersName: Player
+  _playerSprite: {fileID: 21300004, guid: 8aeb9e233fbb8f14db39770841b78b94, type: 3}
   _speed: 21.1
   _position: {x: 0, y: 0, z: 0}
+  _playerHealth: 100
+  _startShootingPoint: {x: 0, y: 2.5, z: 0}

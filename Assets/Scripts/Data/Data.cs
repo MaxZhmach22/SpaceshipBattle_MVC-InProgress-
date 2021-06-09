@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace HellicopterGame
 {
@@ -7,9 +10,22 @@ namespace HellicopterGame
     public sealed class Data : ScriptableObject
     {
         [SerializeField] private string _playerDataPath;
-        [SerializeField] private string _level01;
+        [SerializeField] private string _levelBackrgound;
+
+        [Space]
+        [Header("Weapons")]
+        [SerializeField] private List<WeaponsData> _weaponsList;
+
+        [Space] [Header("Enemy")] [SerializeField]
+        private string _spawnPointsPath;
+        
+        
         private PlayerData _player;
         private Level _level;
+        private LevelBackground _levelBackground;
+        private SpawnPoints _spawnPoints;
+
+        public List<WeaponsData> WeaponsList => _weaponsList;
         
         public PlayerData Player
         {
@@ -24,23 +40,35 @@ namespace HellicopterGame
             }
         }
         
-        public Level Level
+        public LevelBackground LevelBackground
         {
             get
             {
-                if (_level == null)
+                if (_levelBackground == null)
                 {
-                    _level = Load<Level>("Data/" + _level01);
+                    _levelBackground = Load<LevelBackground>("Data/" + _levelBackrgound);
                 }
 
-                return _level;
+                return _levelBackground;
+            }
+        }
+
+        public SpawnPoints SpawnPoints
+        {
+            get
+            {
+                if (_spawnPoints == null)
+                {
+                    _spawnPoints = Load<SpawnPoints>("Data/" + _spawnPointsPath);
+                }
+
+                return _spawnPoints;
             }
         }
         
-        
-        
         private T Load<T>(string resourcesPath) where T : Object =>
             Resources.Load<T>(Path.ChangeExtension(resourcesPath, null));
+
     }
     
 }
