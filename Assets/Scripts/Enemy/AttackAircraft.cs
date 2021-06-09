@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HellicopterGame
 {
-    public sealed class AttackAircraft : Enemy, IExecute
+    public sealed class AttackAircraft : Enemy, IExecute, IMove
     {
         private float _speed = 5f;
         public float Speed => _speed;

@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace HellicopterGame
 {
-    public class CruisAircraft : Enemy, IExecute
+    public class CruisAircraft : Enemy, IExecute, IMove
     {
         private float _speed = 6f;
         public float Speed => _speed;
     
         public void Move(float deltaTime)
         {
-            transform.Translate(Vector3.up * deltaTime * Speed);
+            transform.Translate(new Vector3(Mathf.Cos(deltaTime), 1, 0) * deltaTime);
         }
 
         private void OnBecameInvisible()

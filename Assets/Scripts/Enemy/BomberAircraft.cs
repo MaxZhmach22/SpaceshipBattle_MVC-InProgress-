@@ -3,14 +3,31 @@ using System.Collections.Generic;
 using HellicopterGame;
 using UnityEngine;
 
-public class BomberAircraft : Enemy, IExecute
+public class BomberAircraft : Enemy, IExecute, IMove
 {
-    private float _speed = 2f;
+    private float _speed = 7f;
     public float Speed => _speed;
-    
+
+    private float _amplitude = 1;
+    private float _offset = 5;
+
+    private SpriteRenderer spriteRenderer = new SpriteRenderer();
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = 4;
+    }
+
     public void Move(float deltaTime)
     {
-        transform.Translate(Vector3.up * deltaTime * Speed);
+
+        if (transform.position.y < 0 + _offset)
+        {
+            float xValue = Mathf.Cos(Time.time);
+            transform.Translate((new Vector3(xValue + _amplitude, -1, 0)) * deltaTime * Speed, Space.World);
+        }
+        else transform.Translate(Vector3.down * deltaTime * Speed, Space.World);
     }
 
     private void OnBecameInvisible()
