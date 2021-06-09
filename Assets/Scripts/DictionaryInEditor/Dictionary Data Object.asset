@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e191eb100e4f0cb14f95763fa23539, type: 3}
-  m_Name: LevelsDataTemporary
+  m_Script: {fileID: 11500000, guid: 12d6eac6aa9c98a4091d89508990bf35, type: 3}
+  m_Name: Dictionary Data Object
   m_EditorClassIdentifier: 
+  keys:
+  - Strength
+  - Health
+  - Mana
+  values: 0a000000640000000a000000
