@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BomberAircraft : Enemy, IExecute, IMove
 {
-    private float _speed = 7f;
-    public float Speed => _speed;
 
     private float _amplitude = 1;
     private float _offset = 5;
@@ -17,9 +15,10 @@ public class BomberAircraft : Enemy, IExecute, IMove
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = 4;
+        Speed = 5;
     }
 
-    public void Move(float deltaTime)
+    public override void Move(float deltaTime)
     {
 
         if (transform.position.y < 0 + _offset)

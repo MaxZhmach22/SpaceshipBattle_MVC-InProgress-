@@ -5,13 +5,18 @@ namespace HellicopterGame
 {
     public sealed class AttackAircraft : Enemy, IExecute, IMove
     {
-        private float _speed = 5f;
-        public float Speed => _speed;
+        private SpriteRenderer spriteRenderer = new SpriteRenderer();
 
-        public void Move(float deltaTime)
+
+        private void Awake()
         {
-            transform.Translate(Vector3.up * deltaTime * Speed);
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sortingOrder = 4;
+            Speed = 7;
+
+            
         }
+
 
         private void OnBecameInvisible()
         {
@@ -37,10 +42,18 @@ namespace HellicopterGame
         {
             if (other.tag.Contains("Player"))
             {
-                
                 ReturnToPool();
             }
+            if (other.tag.Contains("Projectile"))
+            {
+                
+            }
             
+        }
+
+        public override void Move(float deltaTime)
+        {
+            transform.Translate(Vector3.up * deltaTime * Speed);
         }
     }
 }

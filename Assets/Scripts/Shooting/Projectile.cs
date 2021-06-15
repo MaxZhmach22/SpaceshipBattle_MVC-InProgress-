@@ -8,9 +8,8 @@ public class Projectile : MonoBehaviour
 {
     private void Start()
     {
-        
+        Destroy(gameObject, 3f);
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name);

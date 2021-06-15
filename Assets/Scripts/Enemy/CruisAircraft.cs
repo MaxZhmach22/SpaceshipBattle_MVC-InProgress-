@@ -4,10 +4,18 @@ namespace HellicopterGame
 {
     public class CruisAircraft : Enemy, IExecute, IMove
     {
-        private float _speed = 6f;
-        public float Speed => _speed;
-    
-        public void Move(float deltaTime)
+
+        private SpriteRenderer spriteRenderer = new SpriteRenderer();
+
+        private void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sortingOrder = 4;
+            Speed = 5;
+        }
+
+
+        public override void Move(float deltaTime)
         {
             transform.Translate(new Vector3(Mathf.Cos(deltaTime), 1, 0) * deltaTime);
         }
