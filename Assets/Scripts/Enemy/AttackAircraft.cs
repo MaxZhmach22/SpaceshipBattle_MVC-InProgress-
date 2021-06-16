@@ -55,5 +55,10 @@ namespace HellicopterGame
         {
             transform.Translate(Vector3.up * deltaTime * Speed);
         }
+
+        public override void Shoot(float deltaTime)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

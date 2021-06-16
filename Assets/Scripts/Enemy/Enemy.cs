@@ -10,6 +10,8 @@ namespace HellicopterGame
         public EnemyHealth Health { get; protected set; }
 
         public abstract void Move(float deltaTime);
+
+        public abstract void Shoot(float deltaTime);
        
     }
 }

@@ -15,7 +15,7 @@ namespace HellicopterGame
             var playerInitialization = new PlayerInitialization(playerFactory, data.Player);
             var boundaries = new BoundariesOfApp(camera);
             var backgroundImage = new BackgroundMainImage(data);
-            var dynamicStart = new BackgroundDynamicStars(data.LevelBackground);
+            var dynamicStars = new BackgroundDynamicStars(data.LevelBackground);
             var weaponsListInitialization = new WeaponsListInit(data);
             var leftSpanPointInit = new SpawnPointsInit(data.SpawnPoints.LeftSpawnPoint);
             var centerSpanPointInit = new SpawnPointsInit(data.SpawnPoints.CenterpawnPoint);
@@ -33,8 +33,8 @@ namespace HellicopterGame
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
             controllers.Add(backgroundImage);
-            controllers.Add(dynamicStart);
-            controllers.Add(new BackgroundSpriteMover(backgroundImage.GetBackgroundImage(), dynamicStart.GetBackgroundStars(), data.LevelBackground.SpeedBackground, data.LevelBackground.SpeedSmallStars));
+            controllers.Add(dynamicStars);
+            controllers.Add(new BackgroundSpriteMover(backgroundImage.GetBackgroundImage(), dynamicStars.GetBackgroundStars(), data.LevelBackground.SpeedBackground, data.LevelBackground.SpeedSmallStars));
             controllers.Add(new InputController(inputInitialization.GetInput()));
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player, boundaries.ScreenBounds));
             controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));

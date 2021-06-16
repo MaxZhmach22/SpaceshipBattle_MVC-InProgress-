@@ -47,5 +47,10 @@ namespace HellicopterGame
                 ReturnToPool();
             }
         }
+
+        public override void Shoot(float deltaTime)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
