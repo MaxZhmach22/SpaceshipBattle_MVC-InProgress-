@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d44d43fac8a1049bd44d204111f31b, type: 3}
-  m_Name: Laser Gun
+  m_Script: {fileID: 11500000, guid: 12d6eac6aa9c98a4091d89508990bf35, type: 3}
+  m_Name: Dictionary Data Object
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2728146624580717581, guid: 02477de0377605246af03858da103b8d, type: 3}
-  _damage: 10
-  _name: 
-  _fireSpeed: 70
+  keys:
+  - Strength
+  - Health
+  - Mana
+  values: 0a000000640000000a000000

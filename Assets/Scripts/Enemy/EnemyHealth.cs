@@ -2,12 +2,12 @@ using UnityEditorInternal.Profiling.Memory.Experimental;
 
 namespace HellicopterGame
 {
-    public class Health
+    public class EnemyHealth
     {
         public float Max { get; } 
         public float Current { get; private set; }
 
-        public Health(float max, float current)
+        public EnemyHealth(float max, float current)
         {
             Max = max;
             Current = current;

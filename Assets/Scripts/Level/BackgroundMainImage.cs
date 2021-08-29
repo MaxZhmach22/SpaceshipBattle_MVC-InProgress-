@@ -11,7 +11,7 @@ public class BackgroundMainImage : IInitialization
     private GameObject _spriteGameObject;
     private float _scale;
 
-    public BackgroundMainImage(Data data)
+    public BackgroundMainImage(MainData data)
     {
         _dataSpriteBackgound = data.LevelBackground.Background;
         _offset = data.LevelBackground.OffsetBackgound;

@@ -5,6 +5,7 @@ using HellicopterGame;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "WeaponsData", menuName = "Data/Weapons")]
 public class WeaponsData : ScriptableObject, IWeapon
 {
     public event Action<float> OnDamageTaken;

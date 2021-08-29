@@ -6,7 +6,7 @@ namespace HellicopterGame
     public class WeaponsListInit
     {
         private List<IWeapon> _weaponsList;
-        public WeaponsListInit(Data data)
+        public WeaponsListInit(MainData data)
         {
             _weaponsList = new List<IWeapon>();
             foreach (var weapon in data.WeaponsList)

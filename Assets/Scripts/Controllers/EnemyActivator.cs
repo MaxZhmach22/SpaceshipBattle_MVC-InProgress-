@@ -19,7 +19,7 @@ namespace HellicopterGame
         private int _countOfSHips;
         private int nextInList = 0;
         
-        public EnemyActivator(EnemyPool leftPool, EnemyPool centerPool, EnemyPool rigthPool, Data data)
+        public EnemyActivator(EnemyPool leftPool, EnemyPool centerPool, EnemyPool rigthPool, MainData data)
         {
             _leftPool = leftPool;
             _rigthPool = rigthPool;

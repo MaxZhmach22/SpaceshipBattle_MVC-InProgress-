@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace HellicopterGame
 {
-    public class Boundaries
+    public class BoundariesOfApp
     {
         private Vector2 screenBounds;
         private Camera _camera;
 
         public Vector2 ScreenBounds => screenBounds;
 
-        public Boundaries(Camera camera)
+        public BoundariesOfApp(Camera camera)
         {
             _camera = camera;
             screenBounds =
