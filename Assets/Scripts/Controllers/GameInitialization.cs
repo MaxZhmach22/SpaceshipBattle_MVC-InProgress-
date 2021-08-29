@@ -39,6 +39,7 @@ namespace HellicopterGame
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), data.Player, boundaries.ScreenBounds));
             controllers.Add(new ShootingController(playerInitialization.GetPlayer(), data, weaponsListInitialization, viewServises));
             controllers.Add(activator);
+            new ChainOfPespInit(playerInitialization.GetPlayer()); //Пример ChainOfResponsobility
         }
 
         private void EnemyAddControllers(Controllers controllers, Dictionary<string, Queue<Enemy>> poolDictionary)
