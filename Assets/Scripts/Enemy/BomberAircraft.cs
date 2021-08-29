@@ -5,29 +5,33 @@ using UnityEngine;
 
 public class BomberAircraft : Enemy, IExecute, IMove
 {
-    private float _speed = 7f;
-    public float Speed => _speed;
-
-    private float _amplitude = 1;
-    private float _offset = 5;
+    private IEnemyShooting _shoot;
+    public EnemyData bomberData;
+    private float timerForShoot;
+    private Transform _player;
 
     private SpriteRenderer spriteRenderer = new SpriteRenderer();
 
-    private void Awake()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = 4;
+        Speed = 5;
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _shoot = new EnemyShooting();
+        timerForShoot = bomberData.TimerForShoot;
+        
     }
 
-    public void Move(float deltaTime)
+    public override void Move(float deltaTime)
     {
 
-        if (transform.position.y < 0 + _offset)
+        if (transform.position.y < 0 + bomberData.Offset)
         {
             float xValue = Mathf.Cos(Time.time);
-            transform.Translate((new Vector3(xValue + _amplitude, -1, 0)) * deltaTime * Speed, Space.World);
+            transform.Translate((new Vector3(xValue + bomberData.Amplitude, -1, 0)) * deltaTime * Speed, Space.World);
         }
-        else transform.Translate(Vector3.down * deltaTime * Speed, Space.World);
+        else transform.Translate(Vector3.down * deltaTime * bomberData.Speed, Space.World);
     }
 
     private void OnBecameInvisible()
@@ -46,7 +50,12 @@ public class BomberAircraft : Enemy, IExecute, IMove
         if (isActiveAndEnabled)
         {
             Move(deltaTime);
+            if (Vector3.Distance(transform.position, _player.transform.position) < bomberData.DistanceOpenFire)
+            {
+                Shoot(deltaTime);
+            }
         }
+        
             
     }
 
@@ -57,5 +66,15 @@ public class BomberAircraft : Enemy, IExecute, IMove
             ReturnToPool();
         }
     }
-    
+
+    public override void Shoot(float deltaTime)
+    {
+       
+       if(timerForShoot > 1)
+        {
+            _shoot.Fire(transform, spriteRenderer, bomberData.EnemyProjectile);
+            timerForShoot = 0;
+        }
+        timerForShoot += deltaTime;
+    }
 }

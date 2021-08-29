@@ -4,7 +4,14 @@ namespace HellicopterGame
 {
     public abstract class Enemy : MonoBehaviour
     {
-        public EnemyHealth Health { get; private set; }
- 
+        private float _speed;
+        public float Speed { get => _speed; protected set => _speed = value; }
+
+        public EnemyHealth Health { get; protected set; }
+
+        public abstract void Move(float deltaTime);
+
+        public abstract void Shoot(float deltaTime);
+       
     }
 }
